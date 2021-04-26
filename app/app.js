@@ -1,5 +1,5 @@
-// const socket = io('https://safe-beyond-79826.herokuapp.com/');
-const socket = io('ws://localhost:8080')
+const socket = io('https://safe-beyond-79826.herokuapp.com/');
+//const socket = io('ws://localhost:8080')
 
 var firebaseConfig = {
     apiKey: "AIzaSyBXHPCQrhyYFaGRzswjmFtiVHZGbCROu3w",
