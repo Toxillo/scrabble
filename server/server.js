@@ -6,12 +6,21 @@ const io = require('socket.io')(http, {
 
 var turn = 0;
 var playerCount = 0;
+var gameInProg = false;
 
 io.on('connection', (socket) => {
 	console.log('player connected');
-	playerCount += 1;
-	console.log(playerCount)
-    io.to(socket.id).emit('id', {playerCount: playerCount, turn: turn + 1});
+
+    socket.on('joined', (name) => {
+        playerCount += 1;
+        io.emit('newUser', name); 
+    });
+
+
+
+    socket.on('start', () => {
+        io.emit('info', {playerCount: playerCount, turn: turn + 1});
+    })
 
     socket.on('done', (message) => {
     	console.log('done event received');
